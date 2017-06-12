@@ -32,7 +32,7 @@ class Command extends \Symfony\Component\Console\Command\Command
     protected function configure()
     {
         $this->setName('getWordCount')
-            ->addArgument('count', InputArgument::REQUIRED, 'State the number of results to display');
+            ->addArgument('count', InputArgument::OPTIONAL, 'State the number of results to display', 100);
     }
 
     /**

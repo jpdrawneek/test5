@@ -7,4 +7,18 @@ word2,count
 word3,count
 ...
 
+Install
+=======
+In project root:
 
+composer install -o
+
+Run
+===
+In project root:
+
+./bin/console.sh getWordCount
+
+If you want a different number of items returned:
+
+./bin/console.sh getWordCount <count>
