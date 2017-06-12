@@ -13,8 +13,6 @@ use PHPUnit\Framework\TestCase;
 
 class applicationTest extends TestCase
 {
-    /** @var \pspell_new|\Mockery\MockInterface */
-    protected $dict;
     /** @var application */
     protected $object;
 

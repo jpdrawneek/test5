@@ -38,6 +38,7 @@ class runner
     {
         /** @var ResponseInterface $data */
         $data = $this->client->request('GET', 'https://s3-eu-west-1.amazonaws.com/secretsales-dev-test/interview/flatland.txt');
+        // @todo Move Url to configuration file.
 
         $stream = $data->getBody();
         while(!$stream->eof()) {

@@ -25,6 +25,7 @@ class application
      */
     public function __construct(string $language = 'en')
     {
+        // @todo Move to a factory class to remove the concrete class dependancy.
         $this->dictionary = pspell_new($language);
     }
 
@@ -38,10 +39,12 @@ class application
         $words = [];
         preg_match_all('/[a-zA-Z\'\-]+/', $line, $words);
         foreach ($words[0] as $word) {
+            // @todo Move to an abstracted function so check can be altered.
             if (pspell_check($this->dictionary, $word)) {
                 if (isset($this->wordList[$word])) {
                     $this->wordList[$word]++;
                 } else {
+                    // @todo Change to be an object so data type is defined and can easily be expanded.
                     $this->wordList[$word] = 1;
                 }
             }

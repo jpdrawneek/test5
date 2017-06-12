@@ -18,6 +18,11 @@ class Command extends \Symfony\Component\Console\Command\Command
     /** @var runner */
     protected $runner;
 
+    /**
+     * Command constructor.
+     * @param runner $runner Application runner class
+     * @param null $name Name of command
+     */
     public function __construct(runner $runner, $name = null)
     {
         $this->runner = $runner;
@@ -30,6 +35,11 @@ class Command extends \Symfony\Component\Console\Command\Command
             ->addArgument('count', InputArgument::REQUIRED, 'State the number of results to display');
     }
 
+    /**
+     * @param InputInterface $input
+     * @param OutputInterface $output
+     * @return int return code
+     */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $count = $input->getArgument('count');
@@ -37,5 +47,7 @@ class Command extends \Symfony\Component\Console\Command\Command
         foreach ($result as $label => $value) {
             $output->writeln("$label,$value");
         }
+        // @todo Error handling to return the correct code if something breaks.
+        return 0;
     }
 }

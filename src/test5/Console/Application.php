@@ -10,14 +10,21 @@ namespace test5\Console;
 
 
 use Symfony\Component\Config\FileLocator;
-use Symfony\Component\Console\Command\Command;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 
 class Application extends \Symfony\Component\Console\Application
 {
+    /** @var ContainerBuilder */
     protected $container;
 
+    /**
+     * Application constructor.
+     * @param string $name
+     * @param string $version
+     * @todo Load configuration file to configure dictionary language.
+     * @todo Load configuration file to configure text file url.
+     */
     public function __construct($name = 'UNKNOWN', $version = 'UNKNOWN')
     {
         $this->container = new ContainerBuilder();
@@ -26,6 +33,12 @@ class Application extends \Symfony\Component\Console\Application
         parent::__construct($name, $version);
     }
 
+    /**
+     * Get Objects defined in services.yml from the container.
+     *
+     * @param string $id
+     * @return object
+     */
     public function containerGet(string $id)
     {
         return $this->container->get($id);
