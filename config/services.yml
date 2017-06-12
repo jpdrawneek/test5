@@ -1,0 +1,12 @@
+services:
+  guzzle:
+    class: GuzzleHttp\Client
+
+  application:
+    class: test5\application
+
+  application.runner:
+    class: test5\runner
+    arguments:
+      - "@guzzle"
+      - "@application"
